@@ -1,0 +1,52 @@
+doctype html
+html
+	head
+		title hello
+		link(rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css')
+		ink(rel='stylesheet' href='css/style.css')
+
+	body
+		.container
+			nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+				a.navbar-brand(href='#') WELCOME
+				button.navbar-toggler.collapsed(type='button', data-toggle='collapse', data-target='#navbarsExample05', aria-controls='navbarsExample05', aria-expanded='false', aria-label='Toggle navigation')
+					span.navbar-toggler-icon
+				#navbarsExample05.navbar-collapse.collapse(style='')
+					ul.navbar-nav.mr-auto
+						li.nav-item
+							a.nav-link.addnewentery(href='#', id='hideme2')
+								| ADD NEW
+			br
+			h2.text-center WELCOME
+			#hideme.container
+				ul.list-group.table-hover
+					li.list-group-item
+						h4  ADD NEW ENTRY
+						p.text-danger
+							| By adding data to this form your DATA will be added to your database on the server and on google calender
+						form.form-inline.align-middle(action='/add',id='addnewform',method='POST')
+							.form-group
+								input#title.form-control(type='text', placeholder='title', name='title', required='true')
+							.form-group
+								input#descriptin.form-control(type='text', placeholder='description', name='desc', required='true')
+							.form-group
+								input#date.form-control(type='Date', placeholder='description', name='date', required='true')
+							.form-group
+								input#time.form-control(type='time', placeholder='description', name='time', required='true')
+							button.btn.btn-defaultt(type='submit') Submit
+			br
+			block content
+			hr
+			h5 Initiate authintication sequence and sign out
+			a#authorize-button(style='display: none;').btn.btn-success Authorize
+			a#signout-button(style='display: none;').btn.btn-danger Sign Out
+			a#get-button(style='display: none;').btn.btn-success GET DATA FROM GOOGLE TO DATA-BASE
+			a#send-button(style='display: none;')
+			pre#content.
+			script(src='/js/calender-api.js')
+			script(async='', defer='', src='https://apis.google.com/js/api.js', onload='this.onload=function(){};handleClientLoad()', onreadystatechange="if (this.readyState === 'complete') this.onload()")
+			hr
+			p copy right &copy; to anas mezher 2018
+	script(src='bower_components/jquery/dist/jquery.js')
+	script(src='bower_components/bootstrap/dist/js/bootstrap.js')
+	script(src='js/main.js')

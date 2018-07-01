@@ -1,0 +1,35 @@
+extends layout
+
+block content
+
+
+	h5.text-center.text-success Here you can see all your todo data
+	ul(id= "mydataa",style='display: none;').list-group.table-hover
+		each ar, i in todolistt
+			mid= ar.__id
+			li(id= ""+ar._id+"-li").list-group-item
+				a(href= '#'+ar._id , data-toggle='collapse', data-target='#'+ar._id)= ar.title
+				a.btn.btn-danger.delete-item.float-right(href='#',data-id=ar._id,,data2-id=ar.googleID) Delete
+				a.btn.btn-success.float-right(href= "#"+ar._id+"edit", data-toggle='collapse') Update
+				br
+				p Date : #{ar.date} , Time : #{ar.time}
+				div(id= ""+ar._id).collapse.text-center
+					| #{ar.summery}
+				div(id= ""+ar._id+"edit").collapse.text-center
+					form.form-inline.align-middle(action='/',id='editform',method='POST')
+						.form-group
+							input#titleedit.form-control(type='text', value=ar.title, name='title', required='true')
+						.form-group
+							input#descriptinedit.form-control(type='text', value=ar.summery, name='desc', required='true')
+						.form-group
+							input#IDedit.form-control(type='hidden', value=ar._id, name='ID', required='true')
+						.form-group
+							input#GOID.form-control(type='hidden', value=ar.googleID, name='GOID', required='true')
+						.form-group
+							input#dateedit.form-control(type='Date',  value=ar.date, name='date', required='true')
+						.form-group
+							input#timeedit.form-control(type='time',  value=ar.time, name='time', required='true')
+						button.btn.btn-default.float-right(type='submit') Submit
+				br
+		else
+			li.list-group-item There are no values
